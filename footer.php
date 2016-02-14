@@ -84,10 +84,16 @@
   }).bind('cloudinarydone', function(e, data) {
     setTimeout(function() {$('.load-successful').append('<p class="loading">Upload Completed.</p>');}, 200);
     $('.progress_bar').addClass('hidden')
-    setTimeout(function() {$('.load-successful').append('<p class="loading">Creating Preview.</p>');}, 1000);
+    setTimeout(function() {$('.load-successful').append('<p class="loading">Creating Preview.</p>');}, 400);
+
+    pdfHeight = data.result.height;
+    pdfWidth = data.result.width;
+
+    console.log(pdfHeight);
+    console.log(pdfWidth);
 
     pdfURL = $.cloudinary.image(data.result.public_id, 
-      { format: 'jpg', cloud_name: 'restpdf' } );
+      { format: 'pdf', cloud_name: 'restpdf' } );
 
     $('.image-display').append($.cloudinary.image(data.result.public_id, 
       { format: 'jpg', cloud_name: 'restpdf' } ));
@@ -104,6 +110,7 @@
           $('.markup-buttons').removeClass('hidden');
           $('#stepone').addClass('hidden');
           $('#steptwo').removeClass('hidden');
+          $('.load-successful').addClass('hidden');
 
           $( "#image-overlay").height(imgHeight).width(imgWidth);
           clearInterval(checkExist);
@@ -118,8 +125,8 @@
     markedPDF = {
       pdf: {
         url: pdfURL[0].currentSrc,
-        height: imgHeight,
-        width: imgWidth
+        height: pdfHeight,
+        width: pdfWidth
       },
       fields: new Array()
       }
@@ -139,8 +146,8 @@
         }
         markedPDF['fields'][i] = {
           name: fieldName,
-          x: Number(textBoxLeft)/imgWidth,
-          y: Number(textBoxTop)/imgHeight,
+          x: (Number(textBoxLeft))/imgWidth,
+          y: (Number(textBoxTop)+20)/imgHeight,
           font: "Helvetica",
           size: 20
         }
