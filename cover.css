@@ -2,6 +2,11 @@
  * Globals
  */
 
+ ul {
+  padding: 0;
+  list-style-type: none;
+ }
+
 /* Links */
 a,
 a:focus,
@@ -15,8 +20,6 @@ a:hover {
 .btn-default:focus {
   color: #333;
   text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
 }
 
 /* Img */
@@ -165,6 +168,16 @@ body {
   }
 }
 
+.progress_bar {
+  width: 0%;
+  height: 20px;
+  background: #FFF;
+  margin-top: 15px;
+}
+
+.load-successful {
+  margin-top: 15px;
+}
 
 /*
  * Text Overlay
@@ -181,16 +194,20 @@ body {
   overflow: hidden;
  }
 
-  .text-field.ui-resizable {
-    width: 100px;
-    height: 50px;
+  .text-field.ui-draggable {
+    width: auto;
+    height: auto;
+    padding: 0 20px 0 0;
     border: 1px solid #000;
+    line-height: 1;
     position: absolute !important;
-    background: rgba(0,0,0,0.5);
+    background: rgba(125,117,12,0.6);
     text-align: left;
-    min-height: 25px;
+    min-height: 20px;
     min-width: 20px;
     overflow: hidden;
+    box-shadow: 0px 0px 3px 0px #000;
+    cursor: pointer;
   }
 
   .fileinput-button {
@@ -210,6 +227,10 @@ body {
     cursor: pointer;
 }
 
+.markup-buttons {
+  padding-bottom: 30px;
+}
+
 /* Default Styles */
 
 .hidden {
@@ -218,4 +239,17 @@ body {
 
 .show {
   display: initial;
+}
+
+/* Progress Bar */
+
+
+/* Create Text Field */
+
+.create-text-field {
+  padding-bottom: 30px;
+}
+
+input[type="text"] {
+  color: #000;
 }
