@@ -146,7 +146,7 @@
         }
     }
     console.log(markedPDF);
-    $.ajax('http://api.restpdf.io/templates', {
+    $.ajax('https://api.restpdf.io/templates', {
         data: JSON.stringify(markedPDF),
         contentType: "application/json",
         type: "POST"
